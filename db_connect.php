@@ -1,7 +1,8 @@
 <?php
-    $dbConn = mysqli_connect("localhost", "root", "", "bfu");
+    $db_connection = mysqli_connect("localhost", "root", "", "bfu");
 
     // Check connection
+    // TODO: improve for production
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
         exit();
@@ -9,6 +10,6 @@
         echo "Succeeded to connect to MySQL";
     }
 
-    mysqli_select_db($dbConn, "bfu");
-    mysqli_query($dbConn,"set names utf8");
+    mysqli_select_db($db_connection, "bfu");
+    mysqli_query($db_connection,"set names utf8");
 ?>
