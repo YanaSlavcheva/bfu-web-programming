@@ -7,6 +7,7 @@
     <h1>Редактиране на строителен обект</h1>
     <?php
         include "db_connect.php";
+        
         $id = intval($_GET['id']);
         $sql = "SELECT `id`, `name`, `address`, `floors_count`, `apartments_count`, `exterior_plaster`, `interior_plaster`, `contractor`, `investor`, `city`, `country` FROM `construction-sites` WHERE id = $id";
         $construction_site_from_db = mysqli_query($db_connection, $sql);
@@ -49,7 +50,7 @@
                 </td>
             </tr>
             <tr>
-                <td>Вътрешна мазилка</td>
+                <td>Външна мазилка</td>
                 <td>
                     <input type="checkbox" name="interior_plaster" value=1 
                         <?php if ($construction_site_old_data['interior_plaster'] == 1) echo "checked=\"checked\"" ?>
