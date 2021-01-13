@@ -16,7 +16,7 @@
         }
     }
 
-    $all_construction_sites = mysqli_query($dbConn, $sql_get_all_construction_sites);
+    $all_construction_sites = mysqli_query($db_connection, $sql_get_all_construction_sites);
     if (!$all_construction_sites) {
         echo "<h2>Няма въведени строителни обекти</h2>";
         return;
