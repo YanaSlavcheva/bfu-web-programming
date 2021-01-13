@@ -12,7 +12,7 @@
         $construction_site_from_db = mysqli_query($db_connection, $sql);
         $construction_site_old_data = mysqli_fetch_array($construction_site_from_db);
     ?>
-    <form action="update_post.php" method="post">
+    <form action="construction_site_update_data_to_db.php" method="post">
         <table>
             <tr>
                 <td>Име</td>
@@ -81,5 +81,8 @@
                 </td>
             </tr>
         </table>
+        <input type="hidden" name="id" value="<?php echo $construction_site_old_data['id']; ?>" />
+        <input type="submit" name="submit" id="submit" value="Запази промените" />
+        <input type="reset" name="reset" id="reset" value="Изчисти промените" />
     </form>
 </body>

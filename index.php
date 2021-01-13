@@ -62,7 +62,7 @@
                                 echo "<td>".$row["city"]."</td>";
                                 echo "<td>".$row["country"]."</td>"; 	   	     
                                 echo "<td><a href=\"javascript:openPopupWindow('construction_site_delete.php?id=".$row['id']."')\">Изтрий</a></td>";
-                                echo "<td><a href=\"javascript:openPopupWindow('construction_site_update.php?id=".$row['id']."')\">Редактирай</a></td>";
+                                echo "<td><a href=\"javascript:openPopupWindow('construction_site_update_load_form.php?id=".$row['id']."')\">Редактирай</a></td>";
                                 echo "</tr>";
                                 $i++;
                             }
