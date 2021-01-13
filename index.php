@@ -24,7 +24,7 @@
                 <h1>Строителни обекти</h1>
             </article>
             <article class="col-md-4">
-                <a href="">+</a>
+                <a href="javascript:openPopupWindow('construction_site_add_form.php')">+</a>
             </article>
             </section>
             <section>
@@ -62,7 +62,7 @@
                                 echo "<td>".$row["city"]."</td>";
                                 echo "<td>".$row["country"]."</td>"; 	   	     
                                 echo "<td><a href=\"javascript:openPopupWindow('construction_site_delete.php?id=".$row['id']."')\">Изтрий</a></td>";
-                                echo "<td><a href=\"javascript:openPopupWindow('construction_site_update_load_form.php?id=".$row['id']."')\">Редактирай</a></td>";
+                                echo "<td><a href=\"javascript:openPopupWindow('construction_site_update_form.php?id=".$row['id']."')\">Редактирай</a></td>";
                                 echo "</tr>";
                                 $i++;
                             }
