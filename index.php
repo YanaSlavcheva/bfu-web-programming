@@ -2,10 +2,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-        <title>Construction Sites</title>
+        <title>Строителни обекти</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script language="javascript" type="application/javascript">
+            function openPopupWindow(url) {
+                window.open(url, 'mywin', 'width=400, height=500');
+            }
+        </script>
     </head>
     <body>
         <?php
@@ -56,8 +61,8 @@
                                 echo "<td>".$row["investor"]."</td>";
                                 echo "<td>".$row["city"]."</td>";
                                 echo "<td>".$row["country"]."</td>"; 	   	     
-                                echo "<td><a href=\"javascript:popupWin('delete.php?id=".$row['id']."')\">Delete</a></td>";
-                                echo "<td><a href=\"javascript:popupWin('update.php?id=".$row['id']."')\">Edit</a></td>";
+                                echo "<td><a href=\"javascript:openPopupWindow('construction_site_delete.php?id=".$row['id']."')\">Изтрий</a></td>";
+                                echo "<td><a href=\"javascript:openPopupWindow('construction_site_update.php?id=".$row['id']."')\">Редактирай</a></td>";
                                 echo "</tr>";
                                 $i++;
                             }
