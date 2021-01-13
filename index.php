@@ -40,7 +40,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <?php
+                            $i = 1;
+                            while ($row = mysqli_fetch_array($all_construction_sites))
+                            {
+                                echo "<tr>";
+                                echo "<td>".$row["id"]."</td>";
+                                echo "<td>".$row["name"]."</td>";
+                                echo "<td>".$row["address"]."</td>";
+                                echo "<td>".$row["floors_count"]."</td>";
+                                echo "<td>".$row["apartments_count"]."</td>";
+                                echo "<td>".$row["exterior_plaster"]."</td>";
+                                echo "<td>".$row["interior_plaster"]."</td>";
+                                echo "<td>".$row["contractor"]."</td>";
+                                echo "<td>".$row["investor"]."</td>";
+                                echo "<td>".$row["city"]."</td>";
+                                echo "<td>".$row["country"]."</td>"; 	   	     
+                                echo "<td><a href=\"javascript:popupWin('delete.php?id=".$row['id']."')\">Delete</a></td>";
+                                echo "<td><a href=\"javascript:popupWin('update.php?id=".$row['id']."')\">Edit</a></td>";
+                                echo "</tr>";
+                                $i++;
+                            }
+                        ?>
+                        <!-- <tr>
                             <th scope="row">1</th>
                             <td>Изабел</td>
                             <td>ул.Коларска 1</td>
@@ -64,7 +86,7 @@
                             <td>Община Русе</td>
                             <td>Русе</td>
                             <td>България</td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </section>
