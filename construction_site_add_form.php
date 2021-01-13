@@ -3,28 +3,112 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Добавяне на строителен обект</title>
     <script language="javascript">
-        function validateForm (form) {
-            console.log("inside validate function");
-            // TODO: add client side validation here
-            if (form.name.value=="")
-            { alert ("Моля,въведете име!")
-                form.name.focus()
-                return false
+        function validateString (field, fieldLabel, minLength, maxLength) {
+            if (field.value == "")
+            {
+                alert (`Моля, въведете ${fieldLabel}!`);
+                field.focus();
+                return false;
             }
-            if (form.address.value=="")
-            { alert ("Моля,въведете фамилия!")
-                form.address.focus()
-                return false
+            
+            if (field.value.length < minLength || field.value.length > maxLength) {
+                alert (`Дължината на полето ${fieldLabel} трябва да бъде между ${minLength} и ${maxLength} символа!`);
+                field.focus();
+                return false;
+            }
+            
+            if (!(/^[0-9A-Za-z_\u0400-\u04FF]*$/.test(field.value))) {
+                alert ('Моля, използвайте само букви, цифри и долно тире!');
+                field.focus();
+                return false;
             }
 
-            return true
+            return true;
+        }
+
+        function validateNumber(field, fieldLabel, minValue, maxValue) {
+            console.log(field.value);
+            if (field.value == "")
+            {
+                alert (`Моля, въведете ${fieldLabel}!`);
+                field.focus();
+                return false;
+            }
+
+            if (typeof field.value !== 'number') {
+                alert (`Моля, въведете число за ${fieldLabel}!`);
+                field.focus();
+                return false;
+            }
+
+            if (field.value < minValue || field.value > maxLength) {
+                alert (`Моля, за ${fieldLabel} въведете число между ${minValue} и ${maxValue}!`);
+                field.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateForm (form) {
+            // TODO: add client side validation here
+            // name - existing, length between, characters
+            // address- same
+            // number of floors - is number, range
+            // number of apartments - same
+            // изпълнител - existing, length, chars
+            // investor - same
+            // city - same
+            // country - same
+
+            const isFormValid =
+            // validateString(form.name, "Име", 3, 50)
+                // && validateString(form.address, "Адрес", 3, 200)
+                // && 
+                validateNumber(form.floors_count, "Брой етажи", 0, 100)
+                // && validateNumber(form.apartments_count, 0, 1000)
+                // && validateNumber(form.exterior_plaster, -1, 2)
+                // && validateNumber(form.interior_plaster, -1, 2)
+                // && validateString(form.contractor, "Изпълнител", 3, 100)
+                // && validateString(form.investor, "Инвеститор", 3, 100)
+                // && validateString(form.city, "Град", 3, 50)
+                // && validateString(form.country, "Държава", 3, 50);
+
+            return false;
+            return isFormValid;
+            // if (form.name.value=="")
+            // {
+            //     alert ("Моля,въведете име!")
+            //     form.name.focus();
+            //     return false;
+            // }
+            
+            // if (form.name.value.length > 50 || form.name.length < 3) {
+            //     alert ("Дължината на името трябва да бъде между 3 и 50 символа!")
+            //     form.name.focus();
+            //     return false;
+            // }
+            
+            // if (!(/^\w+$/.test(form.name.value))) {
+            //     alert ("Моля, използвайте само букви, цифри и долно тире!")
+            //     form.name.focus();
+            //     return false;
+            // }
+
+            // if (form.address.value=="")
+            // { alert ("Моля, въведете адрес!")
+            //     form.address.focus()
+            //     return false
+            // }
+
+            // return false;
         }
     </script>
 </head>
 <body>
-    <h1>Строителни обекти</h1>
-    <h2>Добавяне</h2>
-    <form action="construction_site_add_save_to_db.php" method="post" onSubmit="return validateForm(this)">
+    <h1>Добавяне на строителни обекти</h1>
+    <h2>Всички полета са задължителни</h2>
+    <form action="" method="post" onSubmit="return validateForm(this)">
         <table>
             <tr>
                 <td>Име</td>

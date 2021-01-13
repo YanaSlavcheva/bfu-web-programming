@@ -26,12 +26,13 @@
         if (mysqli_query($db_connection, $sql)){
             echo "<script>alert('Данните за строителния обект са успешно добавени.')</script>";
         } else {
+            var_dump($sql);
             echo "<script>alert('Възникна грешка при добавянето на строителния обект.')</script>";
         }
     ?>
 
-    <script language="javascript">
+    <!-- <script language="javascript">
         window.opener.location.reload();
         window.close();
-    </script>
+    </script> -->
 </body>
