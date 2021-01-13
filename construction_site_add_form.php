@@ -108,6 +108,7 @@
 <body>
     <h1>Добавяне на строителни обекти</h1>
     <h2>Всички полета са задължителни</h2>
+    <!-- TODO: add as action construction_site_add_save_to_db.php -->
     <form action="" method="post" onSubmit="return validateForm(this)">
         <table>
             <tr>
