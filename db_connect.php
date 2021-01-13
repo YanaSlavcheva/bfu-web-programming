@@ -1,6 +1,5 @@
 <?php
     $dbConn = mysqli_connect("localhost", "root", "", "bfu");
-    // mysqli_select_db($dbConn,"bfu");
 
     // Check connection
     if (mysqli_connect_errno()) {
