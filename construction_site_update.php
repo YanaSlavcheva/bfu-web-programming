@@ -21,40 +21,64 @@
                 </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>Адрес</td>
+                <td>
+                    <textarea name="address" cols="25" rows="3">
+                        <?php echo $construction_site_old_data['address']; ?>
+                    </textarea>
+                </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>Брой етажи</td>
+                <td>
+                    <input type="number" name="floors_count" value="<?php echo $construction_site_old_data['floors_count']; ?>" />
+                </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+            <td>Брой апартаменти</td>
+                <td>
+                    <input type="number" name="apartments_count" value="<?php echo $construction_site_old_data['apartments_count']; ?>" />
+                </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>Външна мазилка</td>
+                <td>
+                    <input type="checkbox" name="exterior_plaster" value=1 
+                        <?php if ($construction_site_old_data['exterior_plaster'] == 1) echo "checked=\"checked\"" ?>
+                    />
+                </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>Вътрешна мазилка</td>
+                <td>
+                    <input type="checkbox" name="interior_plaster" value=1 
+                        <?php if ($construction_site_old_data['interior_plaster'] == 1) echo "checked=\"checked\"" ?>
+                    />
+                </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>Изпълнител</td>
+                <td>
+                    <input type="text" name="contractor" value="<?php echo $construction_site_old_data['contractor']; ?>"/>
+                </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>Инвеститор</td>
+                <td>
+                    <input type="text" name="investor" value="<?php echo $construction_site_old_data['investor']; ?>"/>
+                </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>Град</td>
+                <td>
+                    <input type="text" name="city" value="<?php echo $construction_site_old_data['city']; ?>"/>
+                </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>Инвеститор</td>
+                <td>
+                    <input type="text" name="country" value="<?php echo $construction_site_old_data['country']; ?>"/>
+                </td>
             </tr>
         </table>
     </form>
