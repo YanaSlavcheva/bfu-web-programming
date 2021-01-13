@@ -9,7 +9,7 @@
     </head>
     <body>
         <?php
-            include "load_construction_sites.php";
+            include "construction_sites_get_all.php";
         ?>
         <header>
         </header>
