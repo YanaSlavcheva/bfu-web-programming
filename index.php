@@ -25,7 +25,7 @@
                     } 
                 };
 
-                xhttp.open("GET", "get_construction_sites_by_investor.php?investor=" + investor, true);
+                xhttp.open("GET", "construction_sites_get_by_investor.php?investor=" + investor, true);
                 xhttp.send();
             }
 
@@ -43,7 +43,7 @@
                     } 
                 };
 
-                xhttp.open("GET", "get_construction_sites_by_city.php?city=" + city, true);
+                xhttp.open("GET", "construction_sites_get_by_city.php?city=" + city, true);
                 xhttp.send();
             }
         </script>
