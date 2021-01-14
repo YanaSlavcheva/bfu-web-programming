@@ -49,7 +49,7 @@
                 field.focus();
                 return false;
             }
-alert(field.value);
+
             return true;
         }
 
