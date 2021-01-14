@@ -10,6 +10,42 @@
             function openPopupWindow(url) {
                 window.open(url, 'mywin', 'width=400, height=500');
             }
+
+            function showConstructionSitesByInvestor(investor) {
+                var xhhtp;
+                if (investor == "") {
+                    document.getElementById("construction-sites-by-investor").innerHTML = "";
+                    return;
+                }
+
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        document.getElementById("construction-sites-by-investor").innerHTML = xhttp.responseText;
+                    } 
+                };
+
+                xhttp.open("GET", "get_construction_sites_by_investor.php?investor=" + investor, true);
+                xhttp.send();
+            }
+
+            function showConstructionSitesByCity(city) {
+                var xhhtp;
+                if (city == "") {
+                    document.getElementById("construction-sites-by-city").innerHTML = "";
+                    return;
+                }
+
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        document.getElementById("construction-sites-by-city").innerHTML = xhttp.responseText;
+                    } 
+                };
+
+                xhttp.open("GET", "get_construction_sites_by_city.php?city=" + city, true);
+                xhttp.send();
+            }
         </script>
     </head>
     <body>
@@ -75,21 +111,39 @@
                 <h3>Моля, изберете филтър, за да видите агрегирани резултати.</h3>
                 <article>
                     <h4>Търсене по инвеститор</h4>
-                    <p>Моля, изберете инвеститор</p>
-                    <select name="investor" id="investor" size="5" onchange="showInvestorsList(this.value)">
-                        <?php
-                            include "db_connect.php";
+                    <form action="" method="get">
+                        <label>Моля, изберете инвеститор</label>
+                        <select name="investor" id="investor" size="5" onchange="showConstructionSitesByInvestor(this.value)">
+                            <?php
+                                include "db_connect.php";
 
-                            $sql = "SELECT id as construction_site_id, investor from `construction-sites`";
-                            $investorsList = mysqli_query($db_connection, $sql);
-                            var_dump($investorsList);
-                            while ($row = mysqli_fetch_array($investorsList)) {
-                                echo "<option value=\"".$row['construction_site_id']."\">".$row['investor']."</option>";
-                            }
-                        ?>
-                    </select>
+                                $sql = "SELECT investor from `construction-sites`";
+                                $investorsList = mysqli_query($db_connection, $sql);
+                                while ($row = mysqli_fetch_array($investorsList)) {
+                                    echo "<option value=\"".$row['investor']."\">".$row['investor']."</option>";
+                                }
+                            ?>
+                        </select>
+                        <div id="construction-sites-by-investor"></div>
+                    </form>
                 </article>
                 <article>
+                    <h4>Търсене по град</h4>
+                    <form action="" method="get">
+                        <label>Моля, изберете град</label>
+                        <select name="city" id="city" size="5" onchange="showConstructionSitesByCity(this.value)">
+                            <?php
+                                include "db_connect.php";
+
+                                $sql = "SELECT city from `construction-sites`";
+                                $citiesList = mysqli_query($db_connection, $sql);
+                                while ($row = mysqli_fetch_array($citiesList)) {
+                                    echo "<option value=\"".$row['city']."\">".$row['city']."</option>";
+                                }
+                            ?>
+                        </select>
+                        <div id="construction-sites-by-city"></div>
+                    </form>
                 </article>
             </section>
         </main>
