@@ -70,6 +70,28 @@
                     </tbody>
                 </table>
             </section>
+            <section>
+                <h2>Филтри</h2>
+                <h3>Моля, изберете филтър, за да видите агрегирани резултати.</h3>
+                <article>
+                    <h4>Търсене по инвеститор</h4>
+                    <p>Моля, изберете инвеститор</p>
+                    <select name="investor" id="investor" size="5" onchange="showInvestorsList(this.value)">
+                        <?php
+                            include "db_connect.php";
+
+                            $sql = "SELECT id as construction_site_id, investor from `construction-sites`";
+                            $investorsList = mysqli_query($db_connection, $sql);
+                            var_dump($investorsList);
+                            while ($row = mysqli_fetch_array($investorsList)) {
+                                echo "<option value=\"".$row['construction_site_id']."\">".$row['investor']."</option>";
+                            }
+                        ?>
+                    </select>
+                </article>
+                <article>
+                </article>
+            </section>
         </main>
         <footer>
         </footer>
