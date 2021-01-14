@@ -6,9 +6,9 @@
     $constructionsSitesByCityCount = mysqli_num_rows($constructionSitesByCity);
 
     if (!$constructionsSitesByCityCount) {
-        echo "<p class=\"text-center\">Няма намерени строителни обекти в този град</p>";
+        echo "<p class=\"text-center mt-3\">Няма намерени строителни обекти в този град</p>";
     } else {
-        echo "<h4 class=\"text-center\">Списък на строителните обекти в град $city</h4>";
+        echo "<h4 class=\"text-center mt-3\">Списък на строителните обекти в град $city</h4>";
         echo "<table class=\"table table-striped\">
         <thead>
             <tr>

@@ -6,9 +6,9 @@
     $constructionsSitesByInvestorCount = mysqli_num_rows($constructionSitesByInvestor);
 
     if (!$constructionsSitesByInvestorCount) {
-        echo "<p class=\"text-center\">Няма намерени строителни обекти с този инвеститор</p>";
+        echo "<p class=\"text-center mt-3\">Няма намерени строителни обекти с този инвеститор</p>";
     } else {
-        echo "<h4 class=\"text-center\">Списък на строителните обекти с инвеститор $investor</h4>";
+        echo "<h4 class=\"text-center mt-3\">Списък на строителните обекти с инвеститор $investor</h4>";
         echo "<table class=\"table table-striped\">
         <thead>
             <tr>

@@ -61,7 +61,7 @@
                     <a class="btn btn-outline-primary" href="javascript:openPopupWindow('construction_site_add_form.php')">Добави строителен обект</a>
                 </article>
             </section>
-            <section class="col-md-12 text-center">
+            <section class="col-md-12">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -109,21 +109,21 @@
                     </tbody>
                 </table>
             </section>
-            <section class="col-md-12">
+            <section class="col-md-12 mt-3">
                 <header class="text-center">
                     <h2>Филтри</h2>
                     <p>Моля, изберете филтър, за да видите агрегирани резултати.</p>
                 </header>
-                <article class="col-md-12">
+                <article class="col-md-12 mt-3">
                     <h3 class="text-center">Търсене по инвеститор</h3>
                     <form action="" method="get">
                         <div class="col-md-12">
                             <label class="form-label">Моля, изберете инвеститор</label>
-                            <select class="form-control" size="3" name="investor" id="investor" size="5" onchange="showConstructionSitesByInvestor(this.value)">
+                            <select class="form-control" size="8" name="investor" id="investor" size="5" onchange="showConstructionSitesByInvestor(this.value)">
                                 <?php
                                     include "db_connect.php";
 
-                                    $sql = "SELECT investor from `construction-sites`";
+                                    $sql = "SELECT DISTINCT investor from `construction-sites`";
                                     $investorsList = mysqli_query($db_connection, $sql);
                                     while ($row = mysqli_fetch_array($investorsList)) {
                                         echo "<option value=\"".$row['investor']."\">".$row['investor']."</option>";
@@ -134,16 +134,16 @@
                         <div class="col-md-12" id="construction-sites-by-investor"></div>
                     </form>
                 </article>
-                <article class="col-md-12">
+                <article class="col-md-12 mt-3">
                     <h3 class="text-center">Търсене по град</h3>
                     <form action="" method="get">
                         <div class="col-md-12">
                             <label class="form-label">Моля, изберете град</label>
-                            <select class="form-control" size="3" name="city" id="city" size="5" onchange="showConstructionSitesByCity(this.value)">
+                            <select class="form-control" size="8" name="city" id="city" size="5" onchange="showConstructionSitesByCity(this.value)">
                                 <?php
                                     include "db_connect.php";
 
-                                    $sql = "SELECT city from `construction-sites`";
+                                    $sql = "SELECT DISTINCT city from `construction-sites`";
                                     $citiesList = mysqli_query($db_connection, $sql);
                                     while ($row = mysqli_fetch_array($citiesList)) {
                                         echo "<option value=\"".$row['city']."\">".$row['city']."</option>";
