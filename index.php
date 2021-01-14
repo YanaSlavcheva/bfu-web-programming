@@ -10,7 +10,7 @@
 
         <script language="javascript" type="application/javascript">
             function openPopupWindow(url) {
-                window.open(url, 'mywin', 'width=400, height=500');
+                window.open(url, 'mywin', 'width=600, height=800');
             }
 
             function showConstructionSitesByInvestor(investor) {
