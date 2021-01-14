@@ -6,10 +6,10 @@
     $constructionsSitesByInvestorCount = mysqli_num_rows($constructionSitesByInvestor);
 
     if (!$constructionsSitesByInvestorCount) {
-        echo "<p>Няма намерени строителни обекти с този инвеститор</p>";
+        echo "<p class=\"text-center\">Няма намерени строителни обекти с този инвеститор</p>";
     } else {
-        echo "<h5>Списък на строителните обекти с инвеститор $investor</h5>";
-        echo "<table class=\"table\">
+        echo "<h4 class=\"text-center\">Списък на строителните обекти с инвеститор $investor</h4>";
+        echo "<table class=\"table table-striped\">
         <thead>
             <tr>
                 <th scope=\"col\">Номер</th>
@@ -30,7 +30,7 @@
             while ($row = mysqli_fetch_array($constructionSitesByInvestor))
             {
                 echo "<tr>";
-                echo "<td>".$row["id"]."</td>";
+                echo "<th scope=\"row\">".$row["id"]."</th>";
                 echo "<td>".$row["name"]."</td>";
                 echo "<td>".$row["address"]."</td>";
                 echo "<td>".$row["floors_count"]."</td>";

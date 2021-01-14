@@ -3,9 +3,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
         <title>Строителни обекти</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="styles/styles.css">
+
         <script language="javascript" type="application/javascript">
             function openPopupWindow(url) {
                 window.open(url, 'mywin', 'width=400, height=500');
@@ -48,23 +50,20 @@
             }
         </script>
     </head>
-    <body>
-        <?php
-            include "construction_sites_get_all.php";
-        ?>
-        <header>
-        </header>
-        <main>
-            <section>
-            <article class="col-md-8">
+    <body class="background">
+        <main class="container">           
+            <?php include "construction_sites_get_all.php"; ?>
+            <header class="text-center">
+                <!-- <img src="content/construction-site.jpg" class="img-fluid" alt="construction site image"> -->
                 <h1>Строителни обекти</h1>
-            </article>
-            <article class="col-md-4">
-                <a href="javascript:openPopupWindow('construction_site_add_form.php')">+</a>
-            </article>
+            </header>
+            <section class="col-md-12 text-center">
+                <article>
+                    <a class="btn btn-outline-primary" href="javascript:openPopupWindow('construction_site_add_form.php')">Добави строителен обект</a>
+                </article>
             </section>
-            <section>
-                <table class="table">
+            <section class="col-md-12 text-center">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Номер</th>
@@ -78,6 +77,7 @@
                             <th scope="col">Инвеститор</th>
                             <th scope="col">Град</th>
                             <th scope="col">Държава</th>
+                            <th scope="col">Действия</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -86,7 +86,7 @@
                             while ($row = mysqli_fetch_array($all_construction_sites))
                             {
                                 echo "<tr>";
-                                echo "<td>".$row["id"]."</td>";
+                                echo "<th scope=\"row\">".$row["id"]."</th>";
                                 echo "<td>".$row["name"]."</td>";
                                 echo "<td>".$row["address"]."</td>";
                                 echo "<td>".$row["floors_count"]."</td>";
@@ -97,8 +97,7 @@
                                 echo "<td>".$row["investor"]."</td>";
                                 echo "<td>".$row["city"]."</td>";
                                 echo "<td>".$row["country"]."</td>"; 	   	     
-                                echo "<td><a href=\"javascript:openPopupWindow('construction_site_delete.php?id=".$row['id']."')\">Изтрий</a></td>";
-                                echo "<td><a href=\"javascript:openPopupWindow('construction_site_update_form.php?id=".$row['id']."')\">Редактирай</a></td>";
+                                echo "<td><a class=\"btn btn-outline-primary\" href=\"javascript:openPopupWindow('construction_site_delete.php?id=".$row['id']."')\">Изтрий</a><a class=\"btn btn-outline-primary\" href=\"javascript:openPopupWindow('construction_site_update_form.php?id=".$row['id']."')\">Редактирай</a></td>";
                                 echo "</tr>";
                                 $i++;
                             }
@@ -106,43 +105,49 @@
                     </tbody>
                 </table>
             </section>
-            <section>
-                <h2>Филтри</h2>
-                <h3>Моля, изберете филтър, за да видите агрегирани резултати.</h3>
-                <article>
-                    <h4>Търсене по инвеститор</h4>
+            <section class="col-md-12">
+                <header class="text-center">
+                    <h2>Филтри</h2>
+                    <p>Моля, изберете филтър, за да видите агрегирани резултати.</p>
+                </header>
+                <article class="col-md-12">
+                    <h3 class="text-center">Търсене по инвеститор</h3>
                     <form action="" method="get">
-                        <label>Моля, изберете инвеститор</label>
-                        <select name="investor" id="investor" size="5" onchange="showConstructionSitesByInvestor(this.value)">
-                            <?php
-                                include "db_connect.php";
+                        <div class="col-md-12">
+                            <label class="form-label">Моля, изберете инвеститор</label>
+                            <select class="form-control" size="3" name="investor" id="investor" size="5" onchange="showConstructionSitesByInvestor(this.value)">
+                                <?php
+                                    include "db_connect.php";
 
-                                $sql = "SELECT investor from `construction-sites`";
-                                $investorsList = mysqli_query($db_connection, $sql);
-                                while ($row = mysqli_fetch_array($investorsList)) {
-                                    echo "<option value=\"".$row['investor']."\">".$row['investor']."</option>";
-                                }
-                            ?>
-                        </select>
-                        <div id="construction-sites-by-investor"></div>
+                                    $sql = "SELECT investor from `construction-sites`";
+                                    $investorsList = mysqli_query($db_connection, $sql);
+                                    while ($row = mysqli_fetch_array($investorsList)) {
+                                        echo "<option value=\"".$row['investor']."\">".$row['investor']."</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-md-12" id="construction-sites-by-investor"></div>
                     </form>
                 </article>
-                <article>
-                    <h4>Търсене по град</h4>
+                <article class="col-md-12">
+                    <h3 class="text-center">Търсене по град</h3>
                     <form action="" method="get">
-                        <label>Моля, изберете град</label>
-                        <select name="city" id="city" size="5" onchange="showConstructionSitesByCity(this.value)">
-                            <?php
-                                include "db_connect.php";
+                        <div class="col-md-12">
+                            <label class="form-label">Моля, изберете град</label>
+                            <select class="form-control" size="3" name="city" id="city" size="5" onchange="showConstructionSitesByCity(this.value)">
+                                <?php
+                                    include "db_connect.php";
 
-                                $sql = "SELECT city from `construction-sites`";
-                                $citiesList = mysqli_query($db_connection, $sql);
-                                while ($row = mysqli_fetch_array($citiesList)) {
-                                    echo "<option value=\"".$row['city']."\">".$row['city']."</option>";
-                                }
-                            ?>
-                        </select>
-                        <div id="construction-sites-by-city"></div>
+                                    $sql = "SELECT city from `construction-sites`";
+                                    $citiesList = mysqli_query($db_connection, $sql);
+                                    while ($row = mysqli_fetch_array($citiesList)) {
+                                        echo "<option value=\"".$row['city']."\">".$row['city']."</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-md-12" id="construction-sites-by-city"></div>
                     </form>
                 </article>
             </section>
