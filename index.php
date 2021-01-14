@@ -51,10 +51,9 @@
         </script>
     </head>
     <body class="background">
-        <main class="container">           
+        <main class="container mb-3 mt-3 pb-3 pt-3">           
             <?php include "construction_sites_get_all.php"; ?>
             <header class="text-center">
-                <!-- <img src="content/construction-site.jpg" class="img-fluid" alt="construction site image"> -->
                 <h1>Строителни обекти</h1>
             </header>
             <section class="col-md-12 text-center">
@@ -82,24 +81,29 @@
                     </thead>
                     <tbody>
                         <?php
-                            $i = 1;
-                            while ($row = mysqli_fetch_array($all_construction_sites))
-                            {
-                                echo "<tr>";
-                                echo "<th scope=\"row\">".$row["id"]."</th>";
-                                echo "<td>".$row["name"]."</td>";
-                                echo "<td>".$row["address"]."</td>";
-                                echo "<td>".$row["floors_count"]."</td>";
-                                echo "<td>".$row["apartments_count"]."</td>";
-                                echo "<td>".$row["exterior_plaster"]."</td>";
-                                echo "<td>".$row["interior_plaster"]."</td>";
-                                echo "<td>".$row["contractor"]."</td>";
-                                echo "<td>".$row["investor"]."</td>";
-                                echo "<td>".$row["city"]."</td>";
-                                echo "<td>".$row["country"]."</td>"; 	   	     
-                                echo "<td><a class=\"btn btn-outline-primary\" href=\"javascript:openPopupWindow('construction_site_delete.php?id=".$row['id']."')\">Изтрий</a><a class=\"btn btn-outline-primary\" href=\"javascript:openPopupWindow('construction_site_update_form.php?id=".$row['id']."')\">Редактирай</a></td>";
-                                echo "</tr>";
-                                $i++;
+                            $num_construction_sites = mysqli_num_rows($all_construction_sites);
+                            if (!$num_construction_sites) {
+                                echo "<p class=\"alert alert-warning\">Не са намерени строителни обекти. Моля, добавете от бутона по-горе.</p>";
+                            } else {
+                                $i = 1;
+                                while ($row = mysqli_fetch_array($all_construction_sites))
+                                {
+                                    echo "<tr>";
+                                    echo "<th scope=\"row\">".$row["id"]."</th>";
+                                    echo "<td>".$row["name"]."</td>";
+                                    echo "<td>".$row["address"]."</td>";
+                                    echo "<td>".$row["floors_count"]."</td>";
+                                    echo "<td>".$row["apartments_count"]."</td>";
+                                    echo "<td>".$row["exterior_plaster"]."</td>";
+                                    echo "<td>".$row["interior_plaster"]."</td>";
+                                    echo "<td>".$row["contractor"]."</td>";
+                                    echo "<td>".$row["investor"]."</td>";
+                                    echo "<td>".$row["city"]."</td>";
+                                    echo "<td>".$row["country"]."</td>"; 	   	     
+                                    echo "<td><a class=\"btn btn-outline-primary\" href=\"javascript:openPopupWindow('construction_site_delete.php?id=".$row['id']."')\">Изтрий</a><a class=\"btn btn-outline-primary\" href=\"javascript:openPopupWindow('construction_site_update_form.php?id=".$row['id']."')\">Редактирай</a></td>";
+                                    echo "</tr>";
+                                    $i++;
+                                }
                             }
                         ?>
                     </tbody>
