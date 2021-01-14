@@ -29,14 +29,17 @@
             $i = 1;
             while ($row = mysqli_fetch_array($constructionSitesByCity))
             {
+                $exterior_plaster_value = intval($row["exterior_plaster"]) == 1 ? "Да" : "Не";
+                $interior_plaster_value = intval($row["interior_plaster"]) == 1 ? "Да" : "Не";
+
                 echo "<tr>";
                 echo "<th scope=\"row\">".$row["id"]."</th>";
                 echo "<td>".$row["name"]."</td>";
                 echo "<td>".$row["address"]."</td>";
                 echo "<td>".$row["floors_count"]."</td>";
                 echo "<td>".$row["apartments_count"]."</td>";
-                echo "<td>".$row["exterior_plaster"]."</td>";
-                echo "<td>".$row["interior_plaster"]."</td>";
+                echo "<td>$exterior_plaster_value</td>";
+                echo "<td>$interior_plaster_value</td>";
                 echo "<td>".$row["contractor"]."</td>";
                 echo "<td>".$row["investor"]."</td>";
                 echo "<td>".$row["city"]."</td>";
