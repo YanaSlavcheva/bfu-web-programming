@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> 
 </head>
 <body>
-    <main class="container-fluid">
+    <main class="container">
         <h1>Редактиране на строителен обект</h1>
         <?php
             include "db_connect.php";
@@ -18,77 +18,56 @@
             $construction_site_old_data = mysqli_fetch_array($construction_site_from_db);
         ?>
         <form action="construction_site_update_save_to_db.php" method="post">
-            <table>
-                <tr>
-                    <td>Име</td>
-                    <td>
-                        <input type="text" name="name" value="<?php echo $construction_site_old_data['name']; ?>"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Адрес</td>
-                    <td>
-                        <textarea name="address" cols="25" rows="3">
-                            <?php echo $construction_site_old_data['address']; ?>
-                        </textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Брой етажи</td>
-                    <td>
-                        <input type="number" name="floors_count" value="<?php echo $construction_site_old_data['floors_count']; ?>" />
-                    </td>
-                </tr>
-                <tr>
-                <td>Брой апартаменти</td>
-                    <td>
-                        <input type="number" name="apartments_count" value="<?php echo $construction_site_old_data['apartments_count']; ?>" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Външна мазилка</td>
-                    <td>
-                        <input type="checkbox" name="exterior_plaster" value=1 
-                            <?php if ($construction_site_old_data['exterior_plaster'] == 1) echo "checked=\"checked\"" ?>
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Външна мазилка</td>
-                    <td>
-                        <input type="checkbox" name="interior_plaster" value=1 
-                            <?php if ($construction_site_old_data['interior_plaster'] == 1) echo "checked=\"checked\"" ?>
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Изпълнител</td>
-                    <td>
-                        <input type="text" name="contractor" value="<?php echo $construction_site_old_data['contractor']; ?>"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Инвеститор</td>
-                    <td>
-                        <input type="text" name="investor" value="<?php echo $construction_site_old_data['investor']; ?>"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Град</td>
-                    <td>
-                        <input type="text" name="city" value="<?php echo $construction_site_old_data['city']; ?>"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Държава</td>
-                    <td>
-                        <input type="text" name="country" value="<?php echo $construction_site_old_data['country']; ?>"/>
-                    </td>
-                </tr>
-            </table>
+            <div class="mb-3">
+                <label class="form-label" for="name">Име</label>
+                <input class="form-control" type="text" name="name" value="<?php echo $construction_site_old_data['name']; ?>"/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="address">Адрес</label>
+                <textarea class="form-control" name="address" cols="25" rows="3">
+                    <?php echo $construction_site_old_data['address']; ?>
+                </textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="floors_count">Брой етажи</label>
+                <input class="form-control" type="number" name="floors_count" value="<?php echo $construction_site_old_data['floors_count']; ?>" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="apartments_count">Брой апартаменти</label>
+                <input class="form-control" type="number" name="apartments_count" value="<?php echo $construction_site_old_data['apartments_count']; ?>" />
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="exterior_plaster">Външна мазилка</label>
+                <input class="form-check-input" type="checkbox" name="exterior_plaster" value=1 
+                    <?php if ($construction_site_old_data['exterior_plaster'] == 1) echo "checked=\"checked\"" ?>
+                />
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="interior_plaster">Вътрешна мазилка</label>
+                <input class="form-check-input" type="checkbox" name="interior_plaster" value=1 
+                    <?php if ($construction_site_old_data['interior_plaster'] == 1) echo "checked=\"checked\"" ?>
+                />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="contractor">Изпълнител</label>
+                <input class="form-control" type="text" name="contractor" value="<?php echo $construction_site_old_data['contractor']; ?>"/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="investor">Инвеститор</label>
+                <input class="form-control" type="text" name="investor" value="<?php echo $construction_site_old_data['investor']; ?>"/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="city">Град</label>
+                <input class="form-control" type="text" name="city" value="<?php echo $construction_site_old_data['city']; ?>"/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="country">Държава</label>
+                <input class="form-control" type="text" name="country" value="<?php echo $construction_site_old_data['country']; ?>"/>
+            </div>
+            
             <input type="hidden" name="id" value="<?php echo $construction_site_old_data['id']; ?>" />
-            <input type="submit" name="submit" id="submit" value="Запази промените" />
-            <input type="reset" name="reset" id="reset" value="Изчисти промените" />
+            <input class="btn btn-outline-primary" type="submit" name="submit" id="submit" value="Запази промените" />
+            <input class="btn btn-outline-primary" type="reset" name="reset" id="reset" value="Изчисти промените" />
         </form>
     </main>
 </body>
