@@ -49,7 +49,7 @@
                 field.focus();
                 return false;
             }
-
+alert(field.value);
             return true;
         }
 
@@ -61,8 +61,8 @@
 
             const isFormValid = validateString(form.name, "Име", 3, 50, nameRegex, nameRegexDescription)
                 && validateString(form.address, "Адрес", 3, 200, addressRegex, addressRegexDescription)
-                && validateNumber(form.floors_count, "Брой етажи", 0, 100)
-                && validateNumber(form.apartments_count, "Брой апартаменти", 0, 1000)
+                && validateNumber(form.floors_count, "Брой етажи", 1, 100)
+                && validateNumber(form.apartments_count, "Брой апартаменти", 1, 1000)
                 && validateString(form.contractor, "Изпълнител", 3, 100, nameRegex, nameRegexDescription)
                 && validateString(form.investor, "Инвеститор", 3, 100, nameRegex, nameRegexDescription)
                 && validateString(form.city, "Град", 3, 50, nameRegex, nameRegexDescription)
