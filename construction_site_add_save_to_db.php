@@ -31,8 +31,8 @@
         }
     ?>
 
-    <!-- <script language="javascript">
+    <script language="javascript">
         window.opener.location.reload();
         window.close();
-    </script> -->
+    </script>
 </body>

@@ -29,4 +29,10 @@
             echo "<script>alert('Възникна грешка при обновяването на данните.')</script>";
         }
     ?>
+
+    <script language="javascript">
+        // TODO: extract in file
+        window.opener.location.reload();
+        window.close();
+    </script>
 </body>

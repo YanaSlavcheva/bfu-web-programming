@@ -12,7 +12,7 @@
     <?php
         include "db_connect.php";
         $construction_site_id = intval($_GET['id']);
-        $sql = "delete from construction-sites where id = $id";
+        $sql = "DELETE FROM `construction-sites` WHERE id = $construction_site_id";
 
         if (mysqli_query($db_connection, $sql)) {
             echo "<script>alert('Строителния обект беше изтрит успешно.')</script>";
