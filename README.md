@@ -26,10 +26,10 @@ Fields in the form:
   6/ Go to localhost/bfu-web-programming and you will have the project working
 
   Description:
-  The project lists construction sites that are present in the database.
-  Basic CRUD operations are available: addingof new construction sites, editing existing construction sites, deleting construction sites.
-  Front-end validation is available for all forms and their fields. Proper error messages are displayed if the entered data is invalid.
-  Two separate filter are available. The user can list all construction sites with chosen investor or in a chosen city.
+  - The project lists construction sites that are present in the database.
+  - Basic CRUD operations are available: addingof new construction sites, editing existing construction sites, deleting construction sites.
+  - Front-end validation is available for all forms and their fields. Proper error messages are displayed if the entered data is invalid.
+  - Two separate filters are available. The user can list all construction sites with chosen investor or in a chosen city.
 
   Used technologies and libraries:
   PHP, JavaScript, MySQL, Bootstrap, CSS, HTML
