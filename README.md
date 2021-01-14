@@ -1,6 +1,8 @@
 # bfu-web-programming
+Repository where the processof creating the project is visible:
+https://github.com/YanaSlavcheva/bfu-web-programming
 
-This is a task in PHP programming language.
+This is a project mainly in PHP programming language.
 
 Requirements:
 Create simple form, get data from it and save it in MySQL. The form gathers data for various construction sites' state.
@@ -17,9 +19,9 @@ Fields in the form:
     `city`
     `country`
     
-  How to start it:
+  How to start the project:
   1/ Install XAMPP
-  2/ Download all files from the repo in xampp/htdocs folder
+  2/ Download all files from the repo in xampp/htdocs folder (repo subfolder)
   3/ Start XAMPP
   4/ Open phpmyadmin (usually on localhost/phpmyadmin/)
   5/ Copy the contect of construction-site.sql under SQL tab and execute it - now you have the MySQL db
@@ -32,7 +34,11 @@ Fields in the form:
   - Two separate filters are available. The user can list all construction sites with chosen investor or in a chosen city.
 
   Used technologies and libraries:
-  PHP, JavaScript, MySQL, Bootstrap, CSS, HTML
+  - PHP - server code
+  - JavaScript- client code
+  - MySQL - database
+  - Bootstrap, CSS - styling
+  - HTML
   
   Let me know if you have any questions ;)
   Enjoy!
